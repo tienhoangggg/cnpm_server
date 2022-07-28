@@ -1,0 +1,16 @@
+{
+   "development": {
+      "username": "cnpm0905",
+      "password": "Database0905",
+      "database": "CNPM",
+      "host": "cnpm-db.mysql.database.azure.com",
+      "dialect": "mysql",
+      "logging": false,
+      "dialectOptions": {
+          "ssl": {
+            "require": true
+          }
+      },
+      "timezone": "+07:00"
+    }
+}
