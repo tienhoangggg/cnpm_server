@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"No test specified\"",
-    "start": "nodemon src/index"
+    "start": "node src/index"
   },
   "repository": {
     "type": "git",
