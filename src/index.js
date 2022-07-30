@@ -11,7 +11,7 @@ app.use(cors());
 app.use(cookie());
 connectDB();
 
-app.set('port', (process.env.PORT || 8888));
+app.set('port', (process.env.PORT || 8080));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
