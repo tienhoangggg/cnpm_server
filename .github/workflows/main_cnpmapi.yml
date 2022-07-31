@@ -52,4 +52,4 @@ jobs:
           app-name: 'cnpmapi'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5273BFE5A43B4B95B2DFCC4689E7E777 }}
-          package: /src
+          package: .
