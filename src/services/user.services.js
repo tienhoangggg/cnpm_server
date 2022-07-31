@@ -66,10 +66,7 @@ function userRegister(data) {
                     username: data.username,
                     email: data.email,
                     isVerified: false,
-                    password: data.password, 
-                    fullname: data.fullname, 
-                    dateofbirth : data.dateofbirth,
-                    gender: data.gender,
+                    password: data.password,
                 })
                 const token = jwt.sign({
                     username: data.username

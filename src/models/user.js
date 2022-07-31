@@ -19,11 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     isVerified: DataTypes.BOOLEAN,
     password: DataTypes.STRING,
     role: DataTypes.BOOLEAN,
-    fullName: DataTypes.STRING,
-    dateofbirth: DataTypes.DATE,
-    gender: DataTypes.STRING,
     image: DataTypes.STRING,
-    description: DataTypes.TEXT,
     numOfViol: DataTypes.INTEGER,
     prohibit: DataTypes.BOOLEAN,
   }, {

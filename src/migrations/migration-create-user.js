@@ -25,20 +25,8 @@ module.exports = {
       role: {
         type: Sequelize.BOOLEAN
       },
-      fullName: {
-        type: Sequelize.STRING
-      },
-      dateofbirth: {
-        type: Sequelize.DATE
-      },
-      gender: {
-        type: Sequelize.STRING
-      },
       image: {
         type: Sequelize.STRING
-      },
-      description: {
-        type: Sequelize.TEXT
       },
       numOfViol: {
         type: Sequelize.INTEGER

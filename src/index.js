@@ -11,7 +11,7 @@ app.use(cors());
 app.use(cookie());
 connectDB();
 
-app.set('port', (process.env.PORT || 8080));
+app.set('port', (process.env.PORT || 8888));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -44,7 +44,7 @@ app.use('/upload', require('./routes/storage/upload'));
 app.use('/download', require('./routes/storage/download'));
 app.use('/getview', require('./routes/storage/getview'));
 app.use('/delete', require('./routes/storage/delete'));
-
+app.use('/search', require('./routes/search'));
 
 
 var OPTIONS = {
