@@ -41,8 +41,6 @@ app.use('/feedback', require("./routes/feedback"));
 app.use('/category', require("./routes/category"));
 app.use('/randview', require("./routes/randView"));
 app.use('/upload', require('./routes/storage/upload'));
-app.use('/download', require('./routes/storage/download'));
-app.use('/getview', require('./routes/storage/getview'));
 app.use('/delete', require('./routes/storage/delete'));
 app.use('/search', require('./routes/search'));
 
