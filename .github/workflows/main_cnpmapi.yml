@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'cnpmapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BD515D4703A4403DB65B51AA119593F1 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_654A6DC9A2404E85AF631893A8DE47F7 }}
           package: .
