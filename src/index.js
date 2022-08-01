@@ -6,8 +6,8 @@ const path = require('path');
 const fs = require('fs');
 let app = express();
 const connectDB = require("./config/db-config");
-var cors = require('cors')
-app.use(cors());
+// var cors = require('cors')
+// app.use(cors());
 app.use(cookie());
 connectDB();
 
@@ -16,24 +16,24 @@ app.set('port', (process.env.PORT || 8888));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(function (req, res, next) {
+// app.use(function (req, res, next) {
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
+//     // Website you wish to allow to connect
+//     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//     // Request methods you wish to allow
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//     // Request headers you wish to allow
+//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+//     // Set to true if you need the website to include cookies in the requests sent
+//     // to the API (e.g. in case you use sessions)
+//     res.setHeader('Access-Control-Allow-Credentials', true);
 
-    // Pass to next layer of middleware
-    next();
-});
+//     // Pass to next layer of middleware
+//     next();
+// });
 
 app.use('/users', require("./routes/users"));
 
