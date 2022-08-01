@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 // //     next();
 // // });
 
-app.use('/users', require("./routes/users"));
+// app.use('/users', require("./routes/users"));
 // app.use('/feedback', require("./routes/feedback"));
 // app.use('/category', require("./routes/category"));
 // app.use('/randview', require("./routes/randView"));
@@ -37,7 +37,7 @@ app.use('/users', require("./routes/users"));
 // app.use('/delete', require('./routes/storage/delete'));
 // app.use('/search', require('./routes/search'));
 app.use('/', require('./routes/index'));
-
+app.use('/2', require('./routes/index2'));
 // // var OPTIONS = {
 // //     key: fs.readFileSync(path.join(__dirname, '../key.pem')),
 // //     cert: fs.readFileSync(path.join(__dirname, '../cert.pem'))
