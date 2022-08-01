@@ -50,8 +50,8 @@ app.use(bodyParser.json());
 // server.listen(app.get('port'), function () {
 //     console.log('Server started on port: ' + app.get('port'));
 // });
-const temp = require('./controllers/user.controller')
-var httpserver = http.createServer(temp.handleLogin);
+const example = require('./example');
+var httpserver = http.createServer(example.func());
 const port = process.env.PORT || 8888;
 httpserver.listen(port);
 console.log('Server started on port: ' + port);
