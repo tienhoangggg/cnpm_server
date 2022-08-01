@@ -33,13 +33,13 @@ app.use(bodyParser.json());
 //     next();
 // });
 
-app.use('/users', require("./routes/users"));
-app.use('/feedback', require("./routes/feedback"));
-app.use('/category', require("./routes/category"));
-app.use('/randview', require("./routes/randView"));
-app.use('/upload', require('./routes/storage/upload'));
-app.use('/delete', require('./routes/storage/delete'));
-app.use('/search', require('./routes/search'));
+// app.use('/users', require("./routes/users"));
+// app.use('/feedback', require("./routes/feedback"));
+// app.use('/category', require("./routes/category"));
+// app.use('/randview', require("./routes/randView"));
+// app.use('/upload', require('./routes/storage/upload'));
+// app.use('/delete', require('./routes/storage/delete'));
+// app.use('/search', require('./routes/search'));
 
 
 // var OPTIONS = {
@@ -50,10 +50,8 @@ app.use('/search', require('./routes/search'));
 // server.listen(app.get('port'), function () {
 //     console.log('Server started on port: ' + app.get('port'));
 // });
-var httpserver = http.createServer((request, response) => {
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World!");
-});
+const temp = require('./controllers/user.controller')
+var httpserver = http.createServer(temp.handleLogin);
 const port = process.env.PORT || 8888;
 httpserver.listen(port);
 console.log('Server started on port: ' + port);
