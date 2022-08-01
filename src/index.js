@@ -36,6 +36,8 @@ app.use('/randview', require("./routes/randView"));
 app.use('/upload', require('./routes/storage/upload'));
 app.use('/delete', require('./routes/storage/delete'));
 app.use('/search', require('./routes/search'));
+app.use('/comment', require('./routes/comment'));
+app.use('/image', require('./routes/image'));
 // // var OPTIONS = {
 // //     key: fs.readFileSync(path.join(__dirname, '../key.pem')),
 // //     cert: fs.readFileSync(path.join(__dirname, '../cert.pem'))
