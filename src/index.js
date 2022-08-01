@@ -2,8 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookie = require('cookie-parser');
 var app = express();
-// const connectDB = require("./config/db-config");
-// connectDB();
+const connectDB = require("./config/db-config");
+connectDB();
 // var cors = require('cors')
 // app.use(cors());
 app.use(cookie());
