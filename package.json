@@ -1,14 +1,14 @@
 {
   "name": "cnpm",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"No test specified\"",
-    "start": "node src/index.js"
+    "start": "node src/index"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tienhoangggg/cnpm.git"
+  "description": "nodejs-webapp-express",
+  "author": {
+    "name": "alagrawa"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
@@ -27,8 +27,6 @@
     "path": "^0.12.7",
     "sequelize": "^6.21.2"
   },
-  "keywords": [],
-  "description": "",
   "devDependencies": {
     "nodemon": "^2.0.19",
     "sequelize-cli": "^6.4.1"
