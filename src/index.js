@@ -50,7 +50,10 @@ app.use('/search', require('./routes/search'));
 // server.listen(app.get('port'), function () {
 //     console.log('Server started on port: ' + app.get('port'));
 // });
-var httpserver = http.createServer(app);
+var httpserver = http.createServer((request, response) => {
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.end("Hello World!");
+});
 const port = process.env.PORT || 8888;
 httpserver.listen(port);
 console.log('Server started on port: ' + port);
