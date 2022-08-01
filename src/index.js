@@ -11,9 +11,6 @@ const connectDB = require("./config/db-config");
 // app.use(cors());
 app.use(cookie());
 connectDB();
-
-app.set('port', (process.env.PORT || 8888));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -37,7 +34,6 @@ app.use(bodyParser.json());
 // });
 
 app.use('/users', require("./routes/users"));
-
 app.use('/feedback', require("./routes/feedback"));
 app.use('/category', require("./routes/category"));
 app.use('/randview', require("./routes/randView"));
@@ -55,6 +51,6 @@ app.use('/search', require('./routes/search'));
 //     console.log('Server started on port: ' + app.get('port'));
 // });
 var httpserver = http.createServer(app);
-httpserver.listen(app.get('port'), function () {
-    console.log('Server started on port: ' + app.get('port'));
-});
+const port = process.env.PORT || 8888;
+httpserver.listen(port);
+console.log('Server started on port: ' + port);
