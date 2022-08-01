@@ -1,14 +1,14 @@
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const cookie = require('cookie-parser');
-// let app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookie = require('cookie-parser');
+var app = express();
 // const connectDB = require("./config/db-config");
 // // var cors = require('cors')
 // // app.use(cors());
-// app.use(cookie());
 // connectDB();
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(cookie());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // // app.use(function (req, res, next) {
 
@@ -29,14 +29,14 @@
 // //     next();
 // // });
 
-// app.use('/users', require("./routes/users"));
-// app.use('/feedback', require("./routes/feedback"));
-// app.use('/category', require("./routes/category"));
-// app.use('/randview', require("./routes/randView"));
-// app.use('/upload', require('./routes/storage/upload'));
-// app.use('/delete', require('./routes/storage/delete'));
-// app.use('/search', require('./routes/search'));
-// app.use('/', require('./routes/index'));
+app.use('/users', require("./routes/users"));
+app.use('/feedback', require("./routes/feedback"));
+app.use('/category', require("./routes/category"));
+app.use('/randview', require("./routes/randView"));
+app.use('/upload', require('./routes/storage/upload'));
+app.use('/delete', require('./routes/storage/delete'));
+app.use('/search', require('./routes/search'));
+app.use('/', require('./routes/index'));
 
 // // var OPTIONS = {
 // //     key: fs.readFileSync(path.join(__dirname, '../key.pem')),
@@ -46,21 +46,8 @@
 // // server.listen(app.get('port'), function () {
 // //     console.log('Server started on port: ' + app.get('port'));
 // // });
-// app.set('port', process.env.PORT || 8888);
-// app.listen(app.get('port'), function () {
-//     console.log('Server started on port: ' + app.get('port'));
-// });
-
-
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+app.set('port', process.env.PORT || 8888);
+app.listen(app.get('port'), function () {
+    console.log('Server started on port: ' + app.get('port'));
+});
 var routes = require('./routes/index');
-
-var app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use('/', routes);
-app.set('port', process.env.PORT || 3000);
-var server = app.listen(app.get('port'));
