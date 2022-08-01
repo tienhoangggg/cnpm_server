@@ -1,10 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookie = require('cookie-parser');
-const https = require('https');
-const http = require('http');
-const path = require('path');
-const fs = require('fs');
 let app = express();
 const connectDB = require("./config/db-config");
 // var cors = require('cors')
@@ -33,13 +29,13 @@ app.use(bodyParser.json());
 //     next();
 // });
 
-// app.use('/users', require("./routes/users"));
-// app.use('/feedback', require("./routes/feedback"));
-// app.use('/category', require("./routes/category"));
-// app.use('/randview', require("./routes/randView"));
-// app.use('/upload', require('./routes/storage/upload'));
-// app.use('/delete', require('./routes/storage/delete'));
-// app.use('/search', require('./routes/search'));
+app.use('/users', require("./routes/users"));
+app.use('/feedback', require("./routes/feedback"));
+app.use('/category', require("./routes/category"));
+app.use('/randview', require("./routes/randView"));
+app.use('/upload', require('./routes/storage/upload'));
+app.use('/delete', require('./routes/storage/delete'));
+app.use('/search', require('./routes/search'));
 
 
 // var OPTIONS = {
@@ -50,8 +46,7 @@ app.use(bodyParser.json());
 // server.listen(app.get('port'), function () {
 //     console.log('Server started on port: ' + app.get('port'));
 // });
-const example = require('./example');
-var httpserver = http.createServer(example.func());
-const port = process.env.PORT || 8888;
-httpserver.listen(port);
-console.log('Server started on port: ' + port);
+app.set('port', process.env.PORT || 8888);
+app.listen(app.get('port'), function () {
+    console.log('Server started on port: ' + app.get('port'));
+});
