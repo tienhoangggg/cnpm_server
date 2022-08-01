@@ -33,13 +33,13 @@ app.use(bodyParser.json());
 //     next();
 // });
 
-// app.use('/users', require("./routes/users"));
-// app.use('/feedback', require("./routes/feedback"));
-// app.use('/category', require("./routes/category"));
-// app.use('/randview', require("./routes/randView"));
-// app.use('/upload', require('./routes/storage/upload'));
-// app.use('/delete', require('./routes/storage/delete'));
-// app.use('/search', require('./routes/search'));
+app.use('/users', require("./routes/users"));
+app.use('/feedback', require("./routes/feedback"));
+app.use('/category', require("./routes/category"));
+app.use('/randview', require("./routes/randView"));
+app.use('/upload', require('./routes/storage/upload'));
+app.use('/delete', require('./routes/storage/delete'));
+app.use('/search', require('./routes/search'));
 
 
 // var OPTIONS = {
