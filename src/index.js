@@ -36,7 +36,7 @@ app.use('/randview', require("./routes/randView"));
 app.use('/upload', require('./routes/storage/upload'));
 app.use('/delete', require('./routes/storage/delete'));
 app.use('/search', require('./routes/search'));
-
+app.use('/', require('./routes/index'));
 
 // var OPTIONS = {
 //     key: fs.readFileSync(path.join(__dirname, '../key.pem')),
