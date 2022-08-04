@@ -21,7 +21,6 @@ let handleLogin = async(req, res)=>{
                 maxage: process.env.JWT_MAXAGE
             });
         }
-        delete userData.user.id;
         return res.status(200).json({
             status: userData.status,
             user: userData.user ? userData.user : {}
