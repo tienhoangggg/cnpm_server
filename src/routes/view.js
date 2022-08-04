@@ -1,8 +1,8 @@
 const express = require("express");
-const randview = require("../controllers/getRandView");
+const view = require("../controllers/getview");
 const jwt = require("../middleware/jwt");
 const router = express.Router();
 
-router.post("/", randview.getview);
+router.post("/", view.getview);
 
 module.exports = router;

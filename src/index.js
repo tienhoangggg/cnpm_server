@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.use('/users', require("./routes/users"));
 app.use('/feedback', require("./routes/feedback"));
 app.use('/category', require("./routes/category"));
-app.use('/randview', require("./routes/randView"));
+app.use('/getview', require("./routes/view"));
 app.use('/upload', require('./routes/storage/upload'));
 app.use('/delete', require('./routes/storage/delete'));
 app.use('/search', require('./routes/search'));
