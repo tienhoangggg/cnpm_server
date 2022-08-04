@@ -1,6 +1,6 @@
 const getView = require('../services/getview.service');
 exports.getview = async (req, res) => {
-    var Tags = req.body.category;
+    var tags = req.body.category;
     var num = req.body.num;
     var sortby = req.body.sortby;
     var time = req.body.time;
