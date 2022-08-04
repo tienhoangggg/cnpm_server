@@ -1,12 +1,7 @@
-const getRandView = require('../services/cateOfImage.service');
+const getView = require('../services/getview.service');
 exports.getview = async (req, res) => {
     var Tags = req.body.category;
-    if (Tags == undefined) { Tags = [] }
-    else { Tags = Tags.split(',') }
     var num = req.body.num;
-    if (num == undefined) {
-        num = 10;
-    }
-    const result = await getRandView.getRandImagesByTag(Tags, num);
+    const result = await getView.getImages(tags,undefined,undefined,num);
     res.json(result);
 }
