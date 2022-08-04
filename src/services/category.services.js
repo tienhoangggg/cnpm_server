@@ -20,7 +20,7 @@ function checkRoleUser(idUser) {
     })
 }
 
-let createCategory = (category, idUser)=>{
+function createCategory (category, idUser){
     return new Promise(async(resolve, reject)=>{
         try {
             let isExist = await checkRoleUser(idUser)
@@ -39,7 +39,7 @@ let createCategory = (category, idUser)=>{
     })
 }
 
-let deleteCategory = (category, idUser)=>{
+function deleteCategory (category, idUser){
     return new Promise(async(resolve, reject)=>{
         try {
             let isAdmin = await checkRoleUser(idUser)
@@ -77,7 +77,28 @@ let deleteCategory = (category, idUser)=>{
     })
 }
 
+function readCategory(){
+    return new Promise(async(resolve, reject)=>{
+        try {
+            data = {}
+            category = await db.Category.findAll({
+                raw: true
+            })
+            data.id = [];
+            data.name = [];
+            for(let i = 0; i < category.length; i++){
+                data.id.push(category[i].id)
+                data.name.push(category[i].name)
+            }
+            resolve(data)
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
 module.exports = {
     createCategory: createCategory,
     deleteCategory: deleteCategory,
+    readCategory: readCategory
 }

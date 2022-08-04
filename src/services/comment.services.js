@@ -35,12 +35,20 @@ function commentRead(data){
                 where: {idImage: data.idImage},
                 raw: true
             })
+            // console.log(comment)
+            findImage = await db.Image.findOne({
+                where: {id: data.idImage},
+                raw: true
+            })
+            console.log(findImage)
             for(const element of comment){
                 idAvatar.push(element.idAvatar)
                 username.push(element.username)
                 content.push(element.content)
                 updatedAt.push(element.updatedAt)
             }
+            comment.like = findImage.numOfLike
+            comment.star = findImage.numOfStar
             comment.idAvatar = idAvatar
             comment.username = username
             comment.content = content

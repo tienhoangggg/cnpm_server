@@ -3,6 +3,11 @@ const image = require("../controllers/image.controller");
 const jwt = require("../middleware/jwt");
 const router = express.Router();
 
-router.get("/like", jwt.verify, image.like);
+router.post("/like", jwt.verify, image.like);
+router.post("/star", jwt.verify, image.star);
+router.post("/dislike", jwt.verify, image.dislike);
+router.post("/deleteStar", jwt.verify, image.deleteStar);
+
+
 
 module.exports = router;

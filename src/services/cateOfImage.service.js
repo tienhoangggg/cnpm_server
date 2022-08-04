@@ -10,7 +10,10 @@ const getRandImagesByTag = async (tags, num) => {
             }
         }
         q = q + ') and ';
-        const images = await db.sequelize.query('SELECT images.id FROM images WHERE(not exists(select categories.name from categories '+q+'(categories.name not in(select CateOfImages.nameCate from CateOfImages where CateOfImages.idImage = images.id))))) ORDER BY RAND() LIMIT ' + num)
+        const images = await db.sequelize.query(`SELECT images.id 
+                                                FROM images 
+                                                WHERE(not exists(select categories.name 
+                                                    from categories `+q+`(categories.name not in(select CateOfImages.nameCate from CateOfImages where CateOfImages.idImage = images.id))))) ORDER BY RAND() LIMIT ` + num)
         return images[0];
     } catch (error) {
         console.log(error)

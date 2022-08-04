@@ -79,9 +79,28 @@ let handleGetAllUsers = async(req,res)=>{
     }
 }
 
+let handleGetProfile = async(req, res)=>{
+    try {
+        let user = await userService.getProfile(req.body.id)
+        return res.status(200).json({
+            errCode: 0,
+            status: 'success',
+            like: user.like,
+            star: user.star,
+            numOfImage: user.numOfImage,
+            image: user.image
+        })
+    } catch (error) {
+        return res.status(400).json({
+            status: "error from server",
+        })
+    }
+}
+
 module.exports = {
     handleLogin: handleLogin,
     handleRegister: handleRegister,
     getVerifyEmail: getVerifyEmail,
-    handleGetAllUsers: handleGetAllUsers
+    handleGetAllUsers: handleGetAllUsers,
+    handleGetProfile: handleGetProfile
 }

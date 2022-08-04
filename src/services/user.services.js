@@ -11,7 +11,7 @@ function userLogin(username, hashPassword) {
             let isExist = await checkUsername(username)
             if (isExist){
                 let user = await db.User.findOne({
-                    attributes: ['id', 'username', 'role', 'password', 'isVerified'],
+                    attributes: ['id', 'username', 'image', 'role', 'password', 'isVerified'],
                     where: {username: username},
                     raw: true
                 })
@@ -67,13 +67,14 @@ function userRegister(data) {
                     email: data.email,
                     isVerified: false,
                     password: data.password,
+                    role: 0
                 })
                 const token = jwt.sign({
                     username: data.username
                 }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES
                 });
-                sendEmail.sendEmail(data.email, data.fullname, token)
+                sendEmail.sendEmail(data.email, data.username, token)
                 userData.status = "success"
 
             }else{
@@ -135,10 +136,35 @@ function getAllUsers(userId) {
     })
 }
 
+function getProfile(userId) {
+    return new Promise(async(resolve, reject)=>{
+        try {
+            data = {}
+            findImage = await db.Image.findAll({
+                where: {idUser: userId},
+                raw: true
+            })
+            data.numOfImage = findImage.length
+            data.like = 0
+            data.star = 0
+            data.image = []
+            for(let i = 0; i < findImage.length; i++){
+                data.like = data.like + findImage[i].numOfLike
+                data.star = data.star + findImage[i].numOfStar
+                data.image.push(findImage[i].id)
+            }
+            resolve(data)
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
 module.exports = {
     userLogin: userLogin,
     userRegister: userRegister,
     userVerify: userVerify,
     getAllUsers: getAllUsers,
+    getProfile: getProfile
 
 }

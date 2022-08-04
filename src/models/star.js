@@ -14,8 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Star.init({
-    idImage: {type: DataTypes.STRING, primaryKey: true},
-    idUser: {type: DataTypes.INTEGER, primaryKey: true},
+    idImage: DataTypes.STRING,
+    idUser: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Star',
