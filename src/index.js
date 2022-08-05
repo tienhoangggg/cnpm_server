@@ -10,8 +10,6 @@ app.use(cors(
     {
         origin: 'https://wibuwallpaper.azurewebsites.net',
         credentials: true,
-        exposedHeaders: ["set-cookie"],
-        allowedHeaders: ["Content-Type", "Authorization", "set-cookie"],
         methods: ["GET", "POST", "PUT", "DELETE"]
     }
 ));
