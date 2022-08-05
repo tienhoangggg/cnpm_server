@@ -141,7 +141,7 @@ function getProfile(userId) {
         try {
             data = {}
             findImage = await db.Image.findAll({
-                where: {id: userId},
+                where: {idUser: userId},
                 raw: true
             })
             data.numOfImage = findImage.length
