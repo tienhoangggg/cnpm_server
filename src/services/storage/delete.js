@@ -2,23 +2,13 @@ const drive = require('../../config/ggdrive');
 const db = require("../../models/index");
 
 const checkUser = async (userID, fileID) => {
-    await db.Image.findOne({
-        where: {
-            id: fileID,
-            idUser: userID
-        }
-    }).then(async (image) => {
-        if (image) {
+    let check = await db.sequelize.query(`SELECT * FROM images WHERE ((id = '${fileID}' AND idUser = ${userID}) or exists(select * from users where id = ${userID} and id = 1))`);
+    if(check){
             return true;
         }
         else {
             return false;
         }
-    }
-    ).catch(err => {
-        console.log(err);
-    }
-    )
 }
 
 const deleteFile = async (fileId) => {
