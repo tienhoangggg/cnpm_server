@@ -80,7 +80,7 @@ let handleGetAllUsers = async(req,res)=>{
 
 let handleGetProfile = async(req, res)=>{
     try {
-        let user = await userService.getProfile(req.body.id)
+        let user = await userService.getProfile(req.params.id)
         return res.status(200).json({
             errCode: 0,
             status: 'success',

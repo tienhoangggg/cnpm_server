@@ -8,7 +8,7 @@ router.post('/login', userController.handleLogin)
 router.post('/register', userController.handleRegister)
 router.get('/verify/:token', userController.getVerifyEmail)
 router.get('/get-all-users', userController.handleGetAllUsers)
-router.get('/getprofile', userController.handleGetProfile)
+router.get('/getprofile/:id', userController.handleGetProfile)
 
 
 
