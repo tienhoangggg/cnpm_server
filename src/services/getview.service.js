@@ -15,7 +15,7 @@ const getImages = async (tags,time,sortby,num) => {
         q = q + ') and ';
         var sqlTime = '';
         if (time == 'month')
-            sqlTime = ' or year(images.createdAt) != year(curdate()) or MONTH(images.createdAt) != month(curdate())';
+            sqlTime = ' and year(images.createdAt) = year(curdate()) and MONTH(images.createdAt) = month(curdate())';
         var sqlSort = ' RAND()';
         if (sortby == 'new')
             sqlSort = ' images.createdAt desc';
