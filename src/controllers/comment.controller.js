@@ -18,8 +18,8 @@ let createComment = async(req, res)=>{
 
 let readComment = async(req, res)=>{
     try {
-        console.log(req.body.idImage)
-        let commentData = await commentService.commentRead(req.body)
+        // console.log(req.body.idImage)
+        let commentData = await commentService.commentRead(req.params.id, req.body)
         return res.status(200).json({
             status: 'success',
             message: 'read comment successfully',

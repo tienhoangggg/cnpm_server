@@ -23,7 +23,7 @@ function commentCreate(data) {
     })
 }
 
-function commentRead(data){
+function commentRead(id, data){
     return new Promise(async(resolve, reject)=>{
         try {
             let comment = {};
@@ -32,12 +32,12 @@ function commentRead(data){
             let content = [];
             let updatedAt = [];
             comment = await db.Comment.findAll({
-                where: {idImage: data.idImage},
+                where: {idImage: id},
                 raw: true
             })
             // console.log(comment)
             findImage = await db.Image.findOne({
-                where: {id: data.idImage},
+                where: {id: id},
                 raw: true
             })
             console.log(findImage)

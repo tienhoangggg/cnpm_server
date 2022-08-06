@@ -4,7 +4,7 @@ const jwt = require("../middleware/jwt");
 const router = express.Router();
 
 router.post("/create", commentController.createComment);
-router.get("/read", commentController.readComment);
+router.get("/read/:id", commentController.readComment);
 
 
 module.exports = router;
