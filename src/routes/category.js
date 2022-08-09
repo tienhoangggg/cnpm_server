@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.post('/create', jwt.verify, categoryController.handleCreate)
 router.post('/delete', jwt.verify,categoryController.handleDelete)
-router.get('/read', jwt.verify,categoryController.handleRead)
+router.get('/read',categoryController.handleRead)
 
 
 
