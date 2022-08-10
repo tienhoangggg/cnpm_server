@@ -18,7 +18,7 @@ let handleLogin = async(req, res)=>{
             res.cookie("token", token, {
                 httpOnly: true,
                 sameSite: 'none',
-                secure: true,
+                secure: false,
                 maxage: process.env.JWT_MAXAGE
             });
         }

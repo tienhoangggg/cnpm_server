@@ -26,6 +26,7 @@ app.use('/delete', require('./routes/storage/delete'));
 app.use('/search', require('./routes/search'));
 app.use('/comment', require('./routes/comment'));
 app.use('/image', require('./routes/image'));
+app.use('/alternative', require('./routes/alternative'));
 // // var OPTIONS = {
 // //     key: fs.readFileSync(path.join(__dirname, '../key.pem')),
 // //     cert: fs.readFileSync(path.join(__dirname, '../cert.pem'))
