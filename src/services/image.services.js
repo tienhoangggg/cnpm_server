@@ -71,6 +71,45 @@ function imageStar(idUser, idImage){
     })
 }
 
+
+function imageReport(idImage) {
+    return new Promise(async (resolve, reject)=>{
+        try {
+            let data = {}
+            isExist = checkIdImage(idImage)
+            if(isExist){
+                let image = await db.Image.findOne({
+                    where: {id: idImage}
+                })
+                image.numOfReport = image.numOfReport + 1
+                image.save()
+                data.status = "success"
+                data.message = "report image successfully"
+            }else{
+                data.status = "error"
+                data.message = "report image fail"
+            }
+            resolve(data)
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
+function imageGet(idImage) {
+    return new Promise(async (resolve, reject)=>{
+        try {
+            console.log(idImage)
+            let image = await db.Image.findOne({
+                where: {id: idImage}
+            })
+            resolve(image)
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
 function imageDislike(idUser, idImage){
     return new Promise(async(resolve, reject)=>{
         try {
@@ -125,6 +164,7 @@ function deleteStar(idUser, idImage){
     })
 }
 
+
 function checkIdUser(IdUser) {
     return new Promise(async (resolve, reject)=>{
         try {
@@ -160,9 +200,13 @@ function checkIdImage(idImage) {
 }
 
 
+
+
 module.exports = {
     imageLike: imageLike,
     imageStar: imageStar,
     imageDislike: imageDislike,
-    deleteStar: deleteStar
+    deleteStar: deleteStar,
+    imageReport: imageReport,
+    imageGet: imageGet,
 }

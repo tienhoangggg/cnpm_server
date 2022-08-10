@@ -24,6 +24,10 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      numOfReport: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
