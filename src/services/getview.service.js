@@ -25,8 +25,17 @@ const getImages = async (tags,time,sortby,num) => {
             sqlSort = ' images.numOfStar desc';
         if (num == undefined)
             num = 10;
-        const images = await db.sequelize.query('SELECT images.id FROM images WHERE((not exists(select categories.name from categories '+q+'(categories.name not in(select CateOfImages.nameCate from CateOfImages where CateOfImages.idImage = images.id)))))'+sqlTime+') ORDER BY '+sqlSort+' LIMIT ' + num)
-        return images[0];
+        var images = await db.sequelize.query('SELECT images.id FROM images WHERE((not exists(select categories.name from categories '+q+'(categories.name not in(select CateOfImages.nameCate from CateOfImages where CateOfImages.idImage = images.id)))))'+sqlTime+') ORDER BY '+sqlSort+' LIMIT ' + num)
+        images = images[0];
+        for (let i = 0; i < images.length; i++) {
+            let image = await db.Image.findOne({
+                where: {
+                    id: images[i].id
+                }
+            })
+            images[i].numOfReport = image.numOfReport
+        }
+        return images;
     } catch (error) {
         console.log(error)
     }
