@@ -7,9 +7,12 @@ function imageLike(idUser, idImage){
     return new Promise(async (resolve, reject)=>{
         try {
             let data = {}
-            if(checkIdUser(idUser)){
-                if(checkIdImage(idImage)){
-                    if(!checkLike(idUser, idImage)){
+            let check = await checkIdUser(idUser)
+            if(check){
+                check = await checkIdImage(idImage)
+                if(check){
+                    check = await checkLike(idUser, idImage)
+                    if(!check){
                     await db.Like.create({
                         idImage: idImage,
                         idUser: idUser
@@ -23,15 +26,15 @@ function imageLike(idUser, idImage){
                     data.message = "create like successfully"
                 }else{
                     data.status = "error"
-                    data.message = "create like fail"
+                    data.message = "image already like"
                 }
                 }else{
                     data.status = "error"
-                    data.message = "create like fail"
+                    data.message = "image not found"
                 }
             }else{
                 data.status = "error"
-                data.message = "create like fail"
+                data.message = "user not found"
             }
             resolve(data)
         } catch (error) {
@@ -44,9 +47,12 @@ function imageStar(idUser, idImage){
     return new Promise(async (resolve, reject)=>{
         try {
             let data = {}
-            if(checkIdUser(idUser)){
-                if(checkIdImage(idImage)){
-                    if(!checkStar(idUser, idImage)){
+            let check = await checkIdUser(idUser)
+            if(check){
+                check = await checkIdImage(idImage)
+                if(check){
+                    check = await checkStar(idUser, idImage)
+                    if(!check){
                     await db.Star.create({
                         idImage: idImage,
                         idUser: idUser
@@ -60,15 +66,15 @@ function imageStar(idUser, idImage){
                     data.message = "create star successfully"
                 }else{
                     data.status = "error"
-                    data.message = "create star fail"
+                    data.message = "image already star"
                 }
                 }else{
                     data.status = "error"
-                    data.message = "create star fail"
+                    data.message = "image not found"
                 }
             }else{
                 data.status = "error"
-                data.message = "create star fail"
+                data.message = "user not found"
             }
             resolve(data)
         } catch (error) {
@@ -76,7 +82,6 @@ function imageStar(idUser, idImage){
         }
     })
 }
-
 
 function imageReport(idImage) {
     return new Promise(async (resolve, reject)=>{
