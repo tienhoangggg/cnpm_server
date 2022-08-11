@@ -7,10 +7,9 @@ function imageLike(idUser, idImage){
     return new Promise(async (resolve, reject)=>{
         try {
             let data = {}
-            let isExist = checkIdUser(idUser)
-            if(isExist){
-                isExist = checkIdImage(idImage)
-                if(isExist){
+            if(checkIdUser(idUser)){
+                if(checkIdImage(idImage)){
+                    if(checkLike(idUser, idImage)){
                     await db.Like.create({
                         idImage: idImage,
                         idUser: idUser
@@ -22,6 +21,10 @@ function imageLike(idUser, idImage){
                     image.save()
                     data.status = "success"
                     data.message = "create like successfully"
+                }else{
+                    data.status = "error"
+                    data.message = "create like fail"
+                }
                 }else{
                     data.status = "error"
                     data.message = "create like fail"
@@ -41,10 +44,9 @@ function imageStar(idUser, idImage){
     return new Promise(async (resolve, reject)=>{
         try {
             let data = {}
-            let isExist = checkIdUser(idUser)
-            if(isExist){
-                isExist = checkIdImage(idImage)
-                if(isExist){
+            if(checkIdUser(idUser)){
+                if(checkIdImage(idImage)){
+                    if(checkStar(idUser, idImage)){
                     await db.Star.create({
                         idImage: idImage,
                         idUser: idUser
@@ -56,6 +58,10 @@ function imageStar(idUser, idImage){
                     image.save()
                     data.status = "success"
                     data.message = "create star successfully"
+                }else{
+                    data.status = "error"
+                    data.message = "create star fail"
+                }
                 }else{
                     data.status = "error"
                     data.message = "create star fail"
@@ -114,7 +120,7 @@ function imageDislike(idUser, idImage){
     return new Promise(async(resolve, reject)=>{
         try {
             let data = {}
-            let isExist = await db.Like.findOne({
+            let isExist = await db.Like.findAll({
                 where: {
                     idUser: idUser,
                     IdImage: idImage
@@ -141,7 +147,7 @@ function deleteStar(idUser, idImage){
     return new Promise(async(resolve, reject)=>{
         try {
             let data = {}
-            let isExist = await db.Star.findOne({
+            let isExist = await db.Star.findAll({
                 where: {
                     idUser: idUser,
                     IdImage: idImage
@@ -199,7 +205,45 @@ function checkIdImage(idImage) {
     })
 }
 
+function checkLike(idUser, idImage) {
+    return new Promise(async (resolve, reject)=>{
+        try {
+            let isExist = await db.Like.findOne({
+                where: {
+                    idUser: idUser,
+                    IdImage: idImage
+                }
+            })
+            if(isExist){
+                resolve(true)
+            }else{
+                resolve(false)
+            }
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
 
+function checkStar(idUser, idImage) {
+    return new Promise(async (resolve, reject)=>{
+        try {
+            let isExist = await db.Star.findOne({
+                where: {
+                    idUser: idUser,
+                    IdImage: idImage
+                }
+            })
+            if(isExist){
+                resolve(true)
+            }else{
+                resolve(false)
+            }
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
 
 
 module.exports = {
@@ -209,4 +253,6 @@ module.exports = {
     deleteStar: deleteStar,
     imageReport: imageReport,
     imageGet: imageGet,
+    checkLike: checkLike,
+    checkStar: checkStar
 }

@@ -88,11 +88,38 @@ let getImage = async(req,res)=>{
     }
 }
 
+const check = async (req, res)=>{
+    try {
+        let check1 = await imageService.checkLike(req.idUser, req.body.idImage)
+        let check2 = await imageService.checkStar(req.idUser, req.body.idImage)
+        var like, star
+        if(check1){
+            like = 1
+        }else{
+            like = 0
+        }
+        if(check2){
+            star = 1
+        }else{
+            star = 0
+        }
+        return res.status(200).json({
+            like : like,
+            star : star
+        })
+    } catch (error) {
+        return res.status(400).json({
+            status: "error from server",
+        })
+    }
+}
+
 module.exports = {
     like: like,
     star: star,
     dislike: dislike,
     deleteStar: deleteStar,
     report: report,
-    getImage: getImage
+    getImage: getImage,
+    check: check
 }

@@ -9,7 +9,7 @@ router.post("/dislike", jwt.verify, image.dislike);
 router.post("/deleteStar", jwt.verify, image.deleteStar);
 router.post("/report", image.report);
 router.get("/getImage/:idImage", image.getImage)
-
+router.post("/check",jwt.verify, image.check);
 
 
 module.exports = router;
