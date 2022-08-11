@@ -125,7 +125,7 @@ function imageDislike(idUser, idImage){
     return new Promise(async(resolve, reject)=>{
         try {
             let data = {}
-            let isExist = await db.Like.findAll({
+            let isExist = await db.Like.findOne({
                 where: {
                     idUser: idUser,
                     IdImage: idImage
@@ -152,7 +152,7 @@ function deleteStar(idUser, idImage){
     return new Promise(async(resolve, reject)=>{
         try {
             let data = {}
-            let isExist = await db.Star.findAll({
+            let isExist = await db.Star.findOne({
                 where: {
                     idUser: idUser,
                     IdImage: idImage
