@@ -160,11 +160,30 @@ function getProfile(userId) {
     })
 }
 
+function changeName(userId, name) {
+    return new Promise(async(resolve, reject)=>{
+        try {
+            let user = await db.User.findOne({
+                where: {id: userId}
+            })
+            if(user){
+                user.username = name
+                user.save()
+                resolve(true)
+            }else{
+                resolve(false)
+            }
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
 module.exports = {
     userLogin: userLogin,
     userRegister: userRegister,
     userVerify: userVerify,
     getAllUsers: getAllUsers,
-    getProfile: getProfile
-
+    getProfile: getProfile,
+    changeName: changeName
 }

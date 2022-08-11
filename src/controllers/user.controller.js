@@ -97,10 +97,25 @@ let handleGetProfile = async(req, res)=>{
     }
 }
 
+const changeName = async(req, res)=>{
+    try {
+        let user = await userService.changeName(req.idUser, req.body.newName)
+        return res.status(200).json({
+            status: 'success',
+            user: user
+        })
+    } catch (error) {
+        return res.status(400).json({
+            status: "error from server",
+        })
+    }
+}
+
 module.exports = {
     handleLogin: handleLogin,
     handleRegister: handleRegister,
     getVerifyEmail: getVerifyEmail,
     handleGetAllUsers: handleGetAllUsers,
-    handleGetProfile: handleGetProfile
+    handleGetProfile: handleGetProfile,
+    changeName: changeName
 }
