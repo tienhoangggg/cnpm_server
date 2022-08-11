@@ -100,10 +100,15 @@ let handleGetProfile = async(req, res)=>{
 const changeName = async(req, res)=>{
     try {
         let user = await userService.changeName(req.idUser, req.body.newName)
+        if(user){
         return res.status(200).json({
-            status: 'success',
-            user: user
-        })
+            status: 'success'
+        })}
+        else{
+            return res.status(200).json({
+                status: 'name is already exist'
+            })
+        }
     } catch (error) {
         return res.status(400).json({
             status: "error from server",

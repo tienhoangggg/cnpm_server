@@ -166,7 +166,10 @@ function changeName(userId, name) {
             let user = await db.User.findOne({
                 where: {id: userId}
             })
-            if(user){
+            let check = await db.User.findOne({
+                where: {username: name}
+            })
+            if(user && !check){
                 user.username = name
                 user.save()
                 resolve(true)
