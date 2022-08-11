@@ -9,7 +9,7 @@ function imageLike(idUser, idImage){
             let data = {}
             if(checkIdUser(idUser)){
                 if(checkIdImage(idImage)){
-                    if(checkLike(idUser, idImage)){
+                    if(!checkLike(idUser, idImage)){
                     await db.Like.create({
                         idImage: idImage,
                         idUser: idUser
@@ -46,7 +46,7 @@ function imageStar(idUser, idImage){
             let data = {}
             if(checkIdUser(idUser)){
                 if(checkIdImage(idImage)){
-                    if(checkStar(idUser, idImage)){
+                    if(!checkStar(idUser, idImage)){
                     await db.Star.create({
                         idImage: idImage,
                         idUser: idUser
