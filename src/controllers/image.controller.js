@@ -45,7 +45,7 @@ let dislike = async (req, res)=>{
 
 let deleteStar = async(req, res)=>{
     try {
-        let data = await imageService.imageDeleteStar(req.idUser, req.body.idImage)
+        let data = await imageService.imageDisStar(req.idUser, req.body.idImage)
         return res.status(200).json({
             status: data.status,
             message: data.message

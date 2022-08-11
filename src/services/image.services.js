@@ -148,7 +148,7 @@ function imageDislike(idUser, idImage){
     })
 }
 
-function deleteStar(idUser, idImage){
+function imageDisStar(idUser, idImage){
     return new Promise(async(resolve, reject)=>{
         try {
             let data = {}
@@ -160,7 +160,7 @@ function deleteStar(idUser, idImage){
             })
             if (isExist){
                 await isExist.destroy();
-                let image = await db.Star.findOne({
+                let image = await db.Image.findOne({
                     where: {id: idImage}
                 })
                 image.numOfStar = image.numOfStar - 1
@@ -255,7 +255,7 @@ module.exports = {
     imageLike: imageLike,
     imageStar: imageStar,
     imageDislike: imageDislike,
-    deleteStar: deleteStar,
+    imageDisStar: imageDisStar,
     imageReport: imageReport,
     imageGet: imageGet,
     checkLike: checkLike,
