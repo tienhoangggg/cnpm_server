@@ -6,6 +6,10 @@ exports.delete = async (req, res) => {
         del.deleteFile(fileId);
         del.delDBImages(fileId);
         del.delCateOfImages(fileId);
+        del.delAlterOfImages(fileId);
+        del.delStarOfImages(fileId);
+        del.delCommentOfImages(fileId);
+        del.delLikeOfImages(fileId);
         res.json({ status: 'success' });
     }
     else {
